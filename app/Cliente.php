@@ -23,4 +23,10 @@ class Cliente extends Model
       return $query->where('nombre','LIKE',"%$buscar%")->orWhere('apellido','LIKE',"%$buscar%")->orWhere('cedula','LIKE',"%$buscar%");
     }
 
+    public function invoices()
+    {
+        # code...
+        return $this->hasMany('App\Invoice');
+    }
+
 }

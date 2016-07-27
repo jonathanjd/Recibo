@@ -29,4 +29,11 @@ class User extends Authenticatable
       # code...
       return $query->where('name','LIKE',"%$buscar%")->orWhere('email','LIKE',"%$buscar%");
     }
+
+        public function invoices()
+        {
+            # code...
+             return $this->hasMany('App\Invoice');
+        }
+
 }

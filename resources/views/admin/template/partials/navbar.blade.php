@@ -16,6 +16,28 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
         <li><a href="#">Link</a></li>
+
+        <!-- Cliente -->
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cliente <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ route('admin.cliente.index') }}">Lista</a></li>
+            <li><a href="{{ route('admin.cliente.create') }}">Crear</a></li>
+          </ul>
+        </li>
+        <!-- Fin Cliente -->
+
+        <!-- Recibo -->
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Factura <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ route('admin.cliente.index') }}">Lista</a></li>
+            <li><a href="{{ route('admin.invoice.create') }}">Crear</a></li>
+          </ul>
+        </li>
+        <!-- Fin Recibo -->
+
+
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuario <span class="caret"></span></a>
           <ul class="dropdown-menu">

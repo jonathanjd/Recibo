@@ -9,7 +9,6 @@
     <a href="{{ route('admin.cliente.create') }}" class="btn btn-primary glyphicon glyphicon-plus" data-toggle="tooltip" data-placement="bottom" title="Crear Cliente"></a>
   </p>
 
-
 <!--Buscador de Clientes -->
 {!! Form::open(['route' => 'admin.cliente.index','method' => 'GET']) !!}
 
@@ -24,9 +23,6 @@
 
 {!! Form::close() !!}
 <!--Fin Buscador de Clientes -->
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading">
       <h3 class="panel-title">Lista de Clientes</h3>

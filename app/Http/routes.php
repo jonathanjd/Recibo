@@ -25,4 +25,6 @@ Route::group(['prefix' => 'admin'], function () {
   Route::get('cliente/{cliente}/delete',['as' => 'admin.cliente.delete','uses'=>'ClienteController@delete']);
   Route::resource('cliente', 'ClienteController');
 
+  Route::resource('invoice', 'InvoiceController');
+
 });

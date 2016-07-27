@@ -6,20 +6,28 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use Carbon\Carbon;
+
+use App\Invoice;
+
 use App\Cliente;
 
-class ClienteController extends Controller
+class InvoiceController extends Controller
 {
+
+    public function __construct()
+    {
+        Carbon::setlocale('es');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         //
-        $clientes = Cliente::buscar($request->buscar)->orderBy('nombre','desc')->paginate(5);
-        return view('admin.cliente.index')->with('clientes', $clientes);
     }
 
     /**
@@ -27,10 +35,13 @@ class ClienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         //
-        return view('admin.cliente.create');
+        $now = Carbon::now();
+        $lastInvoice = Invoice::last();
+        $clientes = Cliente::buscar($request->buscar)->orderBy('id','desc')->take(5)->get();
+        return view('admin.invoice.create')->with('now',$now)->with('lastInvoice',$lastInvoice)->with('clientes',$clientes);
     }
 
     /**
@@ -42,10 +53,6 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         //
-        $cliente = new Cliente($request->all());
-        $cliente->save();
-        flash('Cliente Registrado', 'success');
-        return redirect()->route('admin.cliente.show',[$cliente]);
     }
 
     /**
@@ -57,8 +64,6 @@ class ClienteController extends Controller
     public function show($id)
     {
         //
-        $cliente = Cliente::find($id);
-        return view('admin.cliente.show')->with('cliente', $cliente);
     }
 
     /**
@@ -70,9 +75,6 @@ class ClienteController extends Controller
     public function edit($id)
     {
         //
-        $cliente = Cliente::find($id);
-
-        return view('admin.cliente.edit')->with('cliente', $cliente);
     }
 
     /**
@@ -85,18 +87,6 @@ class ClienteController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $cliente = Cliente::find($id);
-        $cliente->fill($request->all());
-        $cliente->save();
-        flash('Cliente Editado', 'success');
-        return redirect()->route('admin.cliente.show',[$cliente]);
-    }
-
-    public function delete($id)
-    {
-        //
-        $cliente = Cliente::find($id);
-        return view('admin.cliente.delete')->with('cliente', $cliente);
     }
 
     /**
@@ -108,9 +98,5 @@ class ClienteController extends Controller
     public function destroy($id)
     {
         //
-        $cliente = Cliente::find($id);
-        $cliente->delete();
-        flash('Cliente Eliminado', 'success');
-        return redirect()->route('admin.cliente.index');
     }
 }
