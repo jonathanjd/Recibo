@@ -4,11 +4,14 @@
 
 @section('content')
 
-<p>
+<div class="col-md-12">
+  <p>
   <a href="{{ route('admin.cliente.index') }}" class="btn btn-primary">Regresar</a>
 </p>
+</div>
 
-<div class="panel panel-primary">
+<div class="col-md-6">
+  <div class="panel panel-primary">
   <div class="panel-heading">
     <h3 class="panel-title">Mostrar Cliente</h3>
   </div>
@@ -32,8 +35,36 @@
     </p>
   </div>
 </div>
+</div>
 
-<p>
+
+<div class="col-md-6">
+  <div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Mis Facturas <a href="{{ route('admin.invoice.create') }}" data-toggle="tooltip" data-placement="bottom" title="Crear Factura"><i class="glyphicon glyphicon-plus"></i></a> </h3>  
+  </div>
+  <div class="panel-body">
+    <p>
+      Contenido factura
+    </p>
+  </div>
+</div>
+</div>
+
+
+<div class="col-md-12">
+  <p>
   <a href="{{ route('admin.cliente.index') }}" class="btn btn-primary">Regresar</a>
 </p>
+</div>
+
+
+@endsection
+
+@section('js')
+  <script type="text/javascript">
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
 @endsection

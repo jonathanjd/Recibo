@@ -11,9 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+
+
+Route::get('clientes', [
+  'as' => 'web.clientes',
+  'uses' => 'WebController@clientes'
+]);
+
 
 
 Route::group(['prefix' => 'admin'], function () {
@@ -28,3 +34,7 @@ Route::group(['prefix' => 'admin'], function () {
   Route::resource('invoice', 'InvoiceController');
 
 });
+
+Route::auth();
+
+Route::get('/', 'HomeController@index');

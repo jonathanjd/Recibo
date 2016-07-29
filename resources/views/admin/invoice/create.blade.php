@@ -51,31 +51,81 @@
               </div>
             </div>
 
-            <div class="form-group">
-              <label for="select" class="control-label">Mis Clientes</label>
-                <select class="form-control" id="select">
-                  
-                  @foreach ($clientes as $cliente)
-                  
-                    <option>{{ $cliente->nombre.' '.$cliente->apellido }}</option>
-                  
-                  @endforeach
-            
-                </select>
-            </div>
 
             {!! Form::close() !!}
             <!--*************************-->
             <!--Fin Buscador de Clientes -->
             <!--*************************-->
+            {!! Form::open(['route' => 'admin.invoice.store','method' => 'POST']) !!}
+            <div id="lista-cliente" class="form-group">
+              <label for="select" class="control-label">Mis Clientes</label>
+                <select name='cliente' class="form-control" id="select" required>
+                        @foreach($clientes as $cliente)
+                            <option value="{{ $cliente->id }}">{{ $cliente->nombre ." ".$cliente->apellido }}</option>
+                        @endforeach
+                </select>
 
+            </div>
 
             <p>
               <button type="button" class="btn btn-primary glyphicon glyphicon-plus" data-toggle="modal" data-target="#myModal" data-placement="bottom">
               </button>
             </p>
 
-            <!--*******-->
+          </div>
+        </div>
+
+      </div>
+    <!-- ************************************** -->
+    <!--  Fin Panel Cliente  -->
+    <!-- ************************************** -->
+
+
+<div class="col-md-6">
+
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">Factura</h3>
+    </div>
+    <div class="panel-body">
+      
+      <div class="form-group">
+        @if (!$lastInvoice == null)
+         {!! Form::label('nombre', 'Numero Factura: '. 1) !!} 
+        @else 
+         {!! Form::label('nombre', 'Numero Factura: '. $lastInvoice) !!} 
+        @endif
+      </div>
+
+      <div class="form-group">
+        {!! Form::label('nombre', 'Fecha Factura: '.$now->day.'/'.$now->month.'/'.$now->year) !!}
+      </div>
+
+        
+
+      <div class="form-group">
+
+        <button type="submit" class="btn btn-primary">Crear Factura</button>
+
+      </div>
+
+      {!! Form::close() !!}
+    </div>
+  </div>
+
+  
+
+</div>
+
+
+  </div>
+</div>
+<p>
+  <a href="{{ route('admin.invoice.index') }}" class="btn btn-primary">Regresar</a>
+</p>
+
+
+<!--*******-->
             <!-- Modal -->
             <!--*******-->
 
@@ -92,6 +142,7 @@
                       <!-- Formulario Crear Cliente -->
                       <!-- ************************ -->
                       {!! Form::open(['route' => 'admin.cliente.store','method' => 'POST']) !!}
+                      {!! Form::hidden('modal', 'modal-cliente') !!}
                       <div class="form-group">
                         {!! Form::label('nombre', 'Nombre') !!}
                         {!! Form::text('nombre',null,['class' => 'form-control','placeholder' => 'Nombre Cliente','required']); !!}
@@ -119,7 +170,7 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Guardar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
                     {!! Form::close() !!}
                   </div>
                 </div>
@@ -129,59 +180,6 @@
             <!-- Fin Modal -->
             <!--***********-->
 
-          </div>
-        </div>
-
-      </div>
-    <!-- ************************************** -->
-    <!--  Fin Panel Cliente  -->
-    <!-- ************************************** -->
-
-
-
-
-
-    {!! Form::open(['route' => 'admin.cliente.store','method' => 'POST']) !!}
-
-      <div class="col-md-6">
-
-        <div class="panel panel-info">
-          <div class="panel-heading">
-            <h3 class="panel-title">Factura</h3>
-          </div>
-          <div class="panel-body">
-            
-            <div class="form-group">
-              @if (!$lastInvoice == null)
-                {!! Form::label('nombre', 'Numero Factura: '. 1) !!}
-              @else
-                {!! Form::label('nombre', 'Numero Factura: '. $lastInvoice) !!}
-              @endif
-            </div>
-
-            <div class="form-group">
-              {!! Form::label('nombre', 'Fecha Factura: '.$now->day.'/'.$now->month.'/'.$now->year) !!}
-            </div>
-
-
-          </div>
-        </div>
-
-      </div>
-
-      <div class="form-group">
-    
-        <button type="reset" class="btn btn-default">Cancel</button>
-        <button type="submit" class="btn btn-primary">Guardar</button>
-    
-      </div>
-
-    {!! Form::close() !!}
-  </div>
-</div>
-<p>
-  <a href="{{ route('admin.invoice.index') }}" class="btn btn-primary">Regresar</a>
-</p>
 
 @endsection
 

@@ -10,6 +10,12 @@ use App\Cliente;
 
 class ClienteController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +24,7 @@ class ClienteController extends Controller
     public function index(Request $request)
     {
         //
-        $clientes = Cliente::buscar($request->buscar)->orderBy('nombre','desc')->paginate(5);
+        $clientes = Cliente::buscar($request->buscar)->orderBy('id','desc')->paginate(5);
         return view('admin.cliente.index')->with('clientes', $clientes);
     }
 
@@ -45,7 +51,16 @@ class ClienteController extends Controller
         $cliente = new Cliente($request->all());
         $cliente->save();
         flash('Cliente Registrado', 'success');
-        return redirect()->route('admin.cliente.show',[$cliente]);
+
+        if ($request->modal == 'modal-cliente') {
+            # code...
+            return redirect()->route('admin.invoice.create');
+        }else {
+            # code...
+            return redirect()->route('admin.cliente.show',[$cliente]);
+        }
+
+        
     }
 
     /**

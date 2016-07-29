@@ -11,7 +11,13 @@
 
 
 <!--Buscador de Clientes -->
-{!! Form::open(['route' => 'admin.cliente.index','method' => 'GET']) !!}
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Buscar Cliente</h3>
+  </div>
+  <div class="panel-body">
+    {!! Form::open(['route' => 'admin.cliente.index','method' => 'GET']) !!}
 
 <div class="form-group">
   <div class="input-group">
@@ -23,6 +29,10 @@
 </div>
 
 {!! Form::close() !!}
+  </div>
+</div>
+
+
 <!--Fin Buscador de Clientes -->
 
 
@@ -98,7 +108,13 @@
   <a href="{{ route('admin.cliente.create') }}" class="btn btn-primary glyphicon glyphicon-plus" data-toggle="tooltip" data-placement="bottom" title="Crear Cliente"></a>
 </p>
 
-{{ $clientes->links() }}
+<div class="panel panel-default">
+  <div class="panel-body">
+    {{ $clientes->links() }}
+  </div>
+</div>
+
+
 
 @endsection
 

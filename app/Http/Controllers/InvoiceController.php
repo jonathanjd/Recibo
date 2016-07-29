@@ -15,10 +15,13 @@ use App\Cliente;
 class InvoiceController extends Controller
 {
 
+    
     public function __construct()
     {
         Carbon::setlocale('es');
+        $this->middleware('auth');
     }
+
 
     /**
      * Display a listing of the resource.
@@ -40,7 +43,7 @@ class InvoiceController extends Controller
         //
         $now = Carbon::now();
         $lastInvoice = Invoice::last();
-        $clientes = Cliente::buscar($request->buscar)->orderBy('id','desc')->take(5)->get();
+        $clientes = Cliente::buscar($request->buscar)->orderBy('id','desc')->take(10)->get();
         return view('admin.invoice.create')->with('now',$now)->with('lastInvoice',$lastInvoice)->with('clientes',$clientes);
     }
 
@@ -53,6 +56,7 @@ class InvoiceController extends Controller
     public function store(Request $request)
     {
         //
+        dd($request->all());
     }
 
     /**
