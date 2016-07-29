@@ -56,7 +56,12 @@ class InvoiceController extends Controller
     public function store(Request $request)
     {
         //
-        dd($request->all());
+       
+        $invoice = new Invoice($request->all());
+        $invoice->save();
+        flash('Factura Creado', 'success');
+        return redirect()->route('admin.invoice.show',[$invoice]);
+    
     }
 
     /**
@@ -68,6 +73,9 @@ class InvoiceController extends Controller
     public function show($id)
     {
         //
+        $invoice = Invoice::find($id);
+        
+        return view('admin.invoice.show')->with('invoice', $invoice);
     }
 
     /**

@@ -8,11 +8,16 @@ use App\Http\Requests;
 
 use App\Cliente;
 
+use App\Invoice;
+
+use Carbon\Carbon;
+
 class ClienteController extends Controller
 {
 
     public function __construct()
     {
+        Carbon::setlocale('es');
         $this->middleware('auth');
     }
 
@@ -72,8 +77,10 @@ class ClienteController extends Controller
     public function show($id)
     {
         //
+        $now = Carbon::now();
+        $lastInvoice = Invoice::last();
         $cliente = Cliente::find($id);
-        return view('admin.cliente.show')->with('cliente', $cliente);
+        return view('admin.cliente.show')->with('cliente', $cliente)->with('now',$now)->with('lastInvoice',$lastInvoice);
     }
 
     /**

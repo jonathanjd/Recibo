@@ -39,9 +39,47 @@
 
 
 <div class="col-md-6">
-  <div class="panel panel-info">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Crear Factura</h3>
+    </div>
+    <div class="panel-body">
+      {!! Form::open(['route' => 'admin.invoice.store','method' => 'POST']) !!}
+      <div class="form-group">
+        @if ($lastInvoice == null) 
+        {!! Form::label('nombre', 'Numero Factura: '. 1) !!} 
+        @else 
+        {!! Form::label('nombre', 'Numero Factura: '. $lastInvoice) !!} 
+        @endif
+      </div>
+
+      {!! Form::hidden('cliente_id', $cliente->id) !!}
+
+      {!! Form::hidden('user_id', Auth::user()->id) !!}
+      
+
+      <div class="form-group">
+        {!! Form::label('nombre', 'Fecha Factura: '.$now->day.'/'.$now->month.'/'.$now->year) !!}
+      </div>
+
+      <div class="form-group">
+
+        <button type="submit" class="btn btn-primary">Crear Factura</button>
+
+      </div>
+
+      {!! Form::close() !!}
+    </div>
+  </div>
+
+
+
+</div>
+
+<div class="col-md-12">
+  <div class="panel panel-primary">
   <div class="panel-heading">
-    <h3 class="panel-title">Mis Facturas <a href="{{ route('admin.invoice.create') }}" data-toggle="tooltip" data-placement="bottom" title="Crear Factura"><i class="glyphicon glyphicon-plus"></i></a> </h3>  
+    <h3 class="panel-title">Mis Facturas</h3>  
   </div>
   <div class="panel-body">
     <p>

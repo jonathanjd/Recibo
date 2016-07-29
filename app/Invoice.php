@@ -26,7 +26,9 @@ class Invoice extends Model
     public function scopeLast($query)
     {
       # code...
-      return $query->select('id')->orderBy('id','desc')->first();
+      $last = $query->select('id')->orderBy('id','desc')->first();
+      
+      return (int)$last->id + 1;
     }
 
 

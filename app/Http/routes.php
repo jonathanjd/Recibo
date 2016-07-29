@@ -15,11 +15,6 @@
 
 
 
-Route::get('clientes', [
-  'as' => 'web.clientes',
-  'uses' => 'WebController@clientes'
-]);
-
 
 
 Route::group(['prefix' => 'admin'], function () {
