@@ -37,7 +37,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Factura <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="{{ route('admin.cliente.index') }}">Lista</a></li>
+            <li><a href="{{ route('admin.invoice.index') }}">Lista</a></li>
             <li><a href="{{ route('admin.invoice.create') }}">Crear</a></li>
           </ul>
         </li>

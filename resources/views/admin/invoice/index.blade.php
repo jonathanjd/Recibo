@@ -1,85 +1,81 @@
 @extends('admin.template.base')
 
-@section('title', 'Lista de Clientes' )
+@section('title', 'Lista de Factura' )
 
 @section('content')
 
 
   <p>
-    <a href="{{ route('admin.cliente.create') }}" class="btn btn-primary glyphicon glyphicon-plus" data-toggle="tooltip" data-placement="bottom" title="Crear Cliente"></a>
+    <a href="{{ route('admin.invoice.create') }}" class="btn btn-primary glyphicon glyphicon-plus" data-toggle="tooltip" data-placement="bottom" title="Crear Factura"></a>
   </p>
 
+
 <!--Buscador de Clientes -->
-{!! Form::open(['route' => 'admin.cliente.index','method' => 'GET']) !!}
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Buscar Factura</h3>
+  </div>
+  <div class="panel-body">
+    {!! Form::open(['route' => 'admin.invoice.index','method' => 'GET']) !!}
 
 <div class="form-group">
   <div class="input-group">
-    {!! Form::text('buscar',null,['class' => 'form-control','placeholder'=>'Buscar Clientes']) !!}
+    {!! Form::text('buscar',null,['class' => 'form-control','placeholder'=>'Buscar Factura']) !!}
     <span class="input-group-btn">
-      <button class="btn btn-default" type="submit" data-toggle="tooltip" data-placement="bottom" title="Buscar Cliente"> <i class="glyphicon glyphicon-search"></i> </button>
+      <button class="btn btn-default" type="submit" data-toggle="tooltip" data-placement="bottom" title="Buscar Factura"> <i class="glyphicon glyphicon-search"></i> </button>
     </span>
   </div>
 </div>
 
 {!! Form::close() !!}
+  </div>
+</div>
+
+
 <!--Fin Buscador de Clientes -->
+
+
+
 <div class="panel panel-primary">
   <div class="panel-heading">
-      <h3 class="panel-title">Lista de Clientes</h3>
+      <h3 class="panel-title">Lista de Factura</h3>
   </div>
   <div class="panel-body">
     <table class="table table-hover">
       <thead>
         <tr>
           <th>
-            #
+            Nº Factura:
           </th>
           <th>
-             Nombre
+            Fecha
           </th>
           <th>
-            Apellido
+            Creado Por
           </th>
           <th>
-            Cedula
-          </th>
-          <th>
-            Telefono N°1
-          </th>
-          <th>
-            Telefono N°2
+            Cliente
           </th>
         </tr>
       </thead>
       <tbody>
-        @foreach($clientes as $cliente)
+        @foreach($invoices as $invoice)
           <tr>
             <td>
-              {{ $cliente->id }}
+              {{ $invoice->id }}
             </td>
             <td>
-              {{ $cliente->nombre }}
+              {{ $invoice->created_at->format('d/m/Y') }}
             </td>
             <td>
-              {{ $cliente->apellido }}
+              {{ $invoice->user->name }}
             </td>
             <td>
-              {{ $cliente->cedula }}
+              {{ $invoice->cliente->nombre .' '.$invoice->cliente->apellido}}
             </td>
             <td>
-              {{ $cliente->telefono_uno }}
-            </td>
-            <td>
-              {{ $cliente->telefono_dos }}
-            </td>
-            <td>
-              <a href="{{ route('admin.cliente.show', $cliente) }}" class="btn btn-info glyphicon glyphicon-eye-open" data-toggle="tooltip" data-placement="bottom" title="Ver Cliente"></a>
-            </td>
-            <td>
-              <a href="{{ route('admin.cliente.edit', $cliente) }}" class="btn btn-warning glyphicon glyphicon-pencil" data-toggle="tooltip" data-placement="bottom" title="Editar Cliente"></a>
-            </td>
-            <td>
-              <a href="{{ route('admin.cliente.delete', $cliente) }}" class="btn btn-danger glyphicon glyphicon-trash" data-toggle="tooltip" data-placement="bottom" title="Eliminar Cliente"></a>
+              <a href="{{ route('admin.invoice.show', $invoice) }}" class="btn btn-info glyphicon glyphicon-eye-open" data-toggle="tooltip" data-placement="bottom" title="Ver Cliente"></a>
             </td>
           </tr>
         @endforeach
@@ -91,10 +87,16 @@
 </div>
 
 <p>
-  <a href="{{ route('admin.cliente.create') }}" class="btn btn-primary glyphicon glyphicon-plus" data-toggle="tooltip" data-placement="bottom" title="Crear Cliente"></a>
+  <a href="{{ route('admin.invoice.create') }}" class="btn btn-primary glyphicon glyphicon-plus" data-toggle="tooltip" data-placement="bottom" title="Crear Factura"></a>
 </p>
 
-{{ $clientes->links() }}
+<div class="panel panel-default">
+  <div class="panel-body">
+    {{ $invoices->links() }}
+  </div>
+</div>
+
+
 
 @endsection
 

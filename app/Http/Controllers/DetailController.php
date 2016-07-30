@@ -6,33 +6,18 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use Carbon\Carbon;
+use App\Detail;
 
-use App\Invoice;
-
-use App\Cliente;
-
-class InvoiceController extends Controller
+class DetailController extends Controller
 {
-
-    
-    public function __construct()
-    {
-        Carbon::setlocale('es');
-        $this->middleware('auth');
-    }
-
-
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         //
-        $invoices = Invoice::buscar($request->buscar)->orderBy('id','desc')->paginate(5);
-        return view('admin.invoice.index')->with('invoices', $invoices);
     }
 
     /**
@@ -40,13 +25,9 @@ class InvoiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
         //
-        $now = Carbon::now();
-        $lastInvoice = Invoice::last();
-        $clientes = Cliente::buscar($request->buscar)->orderBy('id','desc')->take(10)->get();
-        return view('admin.invoice.create')->with('now',$now)->with('lastInvoice',$lastInvoice)->with('clientes',$clientes);
     }
 
     /**
@@ -59,11 +40,10 @@ class InvoiceController extends Controller
     {
         //
        
-        $invoice = new Invoice($request->all());
-        $invoice->save();
-        flash('Factura Creado', 'success');
-        return redirect()->route('admin.invoice.show',[$invoice]);
-    
+        $detail = new Detail($request->all());
+        $detail->save();
+        flash('Detalle Factura Creado', 'success');
+        return redirect()->route('admin.invoice.show',[$detail->invoice_id]);
     }
 
     /**
@@ -75,9 +55,6 @@ class InvoiceController extends Controller
     public function show($id)
     {
         //
-        $invoice = Invoice::find($id);
-        
-        return view('admin.invoice.show')->with('invoice', $invoice);
     }
 
     /**
@@ -101,13 +78,6 @@ class InvoiceController extends Controller
     public function update(Request $request, $id)
     {
         //
-    }
-
-    public function delete($id)
-    {
-        //
-        $cliente = Cliente::find($id);
-        return view('admin.cliente.delete')->with('cliente', $cliente);
     }
 
     /**
