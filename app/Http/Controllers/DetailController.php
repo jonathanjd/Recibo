@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Http\Requests\StoreDetailRequest;
+
+use App\Http\Requests\UpdateDetailRequest;
+
 use App\Http\Requests;
 
 use App\Detail;
@@ -36,7 +40,7 @@ class DetailController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreDetailRequest $request)
     {
         //
        
@@ -66,6 +70,9 @@ class DetailController extends Controller
     public function edit($id)
     {
         //
+        $detail = Detail::find($id);
+
+        return view('admin.detail.edit')->with('detail',$detail);
     }
 
     /**
@@ -75,9 +82,22 @@ class DetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateDetailRequest $request, $id)
     {
         //
+        $detail = Detail::find($id);
+        $detail->fill($request->all());
+        $detail->save();
+        flash('Detalle Editado','success');
+        return redirect()->route('admin.invoice.show',[$detail->invoice_id]);
+
+    }
+
+    public function delete($id)
+    {
+        //
+        $detail = Detail::find($id);
+        return view('admin.detail.delete')->with('detail', $detail);
     }
 
     /**
@@ -89,5 +109,10 @@ class DetailController extends Controller
     public function destroy($id)
     {
         //
+        $detail = Detail::find($id);
+        $invoice = $detail->invoice_id; 
+        $detail->delete();
+        flash('Detalle Eliminado', 'success');
+        return redirect()->route('admin.invoice.show',[$invoice]);
     }
 }

@@ -39,8 +39,15 @@ class Invoice extends Model
     {
       # code...
       $last = $query->select('id')->orderBy('id','desc')->first();
+
+        if ($last == null) {
+          # code...
+            $last = 1;
+            return $last;
+        }else{
+            return (int)$last->id + 1;
+        }
       
-      return (int)$last->id + 1;
     }
 
 

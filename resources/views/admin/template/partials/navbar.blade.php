@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Panel de Control</a>
+      <a class="navbar-brand" href="{{ route('admin.index') }}">Panel de Control</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -20,8 +20,6 @@
       <ul class="nav navbar-nav">
         
         
-
-        <li><a href="#">Link</a></li>
 
         <!-- Cliente -->
         <li class="dropdown">
@@ -43,14 +41,27 @@
         </li>
         <!-- Fin Recibo -->
 
-
+        <!-- Maquina -->
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuario <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Maquina <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="{{ route('admin.user.index') }}">Index</a></li>
-            <li><a href="{{ route('admin.user.create') }}">Crear</a></li>
+            <li><a href="{{ route('admin.cliente.index') }}">Reparada</a></li>
+            <li><a href="{{ route('admin.cliente.create') }}">No Reparada</a></li>
+            <li><a href="{{ route('admin.cliente.create') }}">Entregada</a></li>
+            <li><a href="{{ route('admin.cliente.create') }}">No Entregada</a></li>
           </ul>
         </li>
+        <!-- Fin Maquina -->
+
+        <!-- Usuario -->
+        <li><a href="{{ route('admin.user.index') }}">Usuario</a></li>
+        <!-- Usuario -->
+
+        <!-- Web -->
+        <li><a href="{{ route('web.index') }}">Mi Sitio Web</a></li>
+        <!-- Web -->
+
+      
       </ul>
       
       @endif

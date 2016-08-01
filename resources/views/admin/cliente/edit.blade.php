@@ -45,7 +45,7 @@
 
         <div class="form-group">
           {!! Form::label('telefono_dos', 'Telefono Nº2') !!}
-          {!! Form::text('telefono_dos', $cliente->telefono_dos,['class' => 'form-control','placeholder' => 'Telefono Cliente','required']); !!}
+          {!! Form::text('telefono_dos', $cliente->telefono_dos,['class' => 'form-control','placeholder' => 'Telefono Cliente']); !!}
         </div>
 
         <div class="form-group">

@@ -10,29 +10,25 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
-
-
-
-
-
-
 Route::group(['prefix' => 'admin'], function () {
 
-  Route::get('user/{user}/delete',['as' => 'admin.user.delete','uses'=>'UserController@delete']);
-  Route::resource('user', 'UserController');
+	Route::get('index',['as' => 'admin.index','uses'=>'AdminController@index']);
+
+  	Route::get('user/{user}/delete',['as' => 'admin.user.delete','uses'=>'UserController@delete']);
+  	Route::resource('user', 'UserController');
 
 
-  Route::get('cliente/{cliente}/delete',['as' => 'admin.cliente.delete','uses'=>'ClienteController@delete']);
-  Route::resource('cliente', 'ClienteController');
+  	Route::get('cliente/{cliente}/delete',['as' => 'admin.cliente.delete','uses'=>'ClienteController@delete']);
+  	Route::resource('cliente', 'ClienteController');
 
-  Route::get('invoice/{invoice}/delete',['as' => 'admin.invoice.delete','uses'=>'InvoiceController@delete']);
-  Route::resource('invoice', 'InvoiceController');
+  	Route::resource('invoice', 'InvoiceController');
 
-  Route::resource('detail', 'DetailController');
+
+  	Route::get('invoice/{detail}/delete',['as' => 'admin.detail.delete','uses'=>'DetailController@delete']);
+  	Route::resource('detail', 'DetailController');
 
 });
 
 Route::auth();
 
-Route::get('/', 'HomeController@index');
+Route::get('/', ['as' => 'web.index','uses' =>'HomeController@index',]);

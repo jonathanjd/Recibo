@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Http\Requests\StoreInvoiceRequest;
+
+use App\Http\Requests\UpdateInvoiceRequest;
+
 use Carbon\Carbon;
 
 use App\Invoice;
@@ -55,10 +59,9 @@ class InvoiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreInvoiceRequest $request)
     {
         //
-       
         $invoice = new Invoice($request->all());
         $invoice->save();
         flash('Factura Creado', 'success');
@@ -98,17 +101,11 @@ class InvoiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateInvoiceRequest $request, $id)
     {
         //
     }
 
-    public function delete($id)
-    {
-        //
-        $cliente = Cliente::find($id);
-        return view('admin.cliente.delete')->with('cliente', $cliente);
-    }
 
     /**
      * Remove the specified resource from storage.

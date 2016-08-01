@@ -98,13 +98,14 @@
                   @endif
                   
 
-                  <a href="{{ route('admin.detail.destroy', $detail) }}" class="btn btn-danger pull-right glyphicon glyphicon-trash" data-toggle="tooltip" data-placement="bottom" title="Eliminar Cliente"></a>
+                  <a href="{{ route('admin.detail.delete', $detail) }}" class="btn btn-danger pull-right glyphicon glyphicon-trash" data-toggle="tooltip" data-placement="bottom" title="Eliminar Cliente"></a>
 
-                  <a href="{{ route('admin.invoice.edit', $detail) }}" class="btn btn-warning glyphicon glyphicon-pencil pull-right" data-toggle="tooltip" data-placement="bottom" title="Editar Cliente"></a>
+                  <a href="{{ route('admin.detail.edit', $detail) }}" class="btn btn-warning glyphicon glyphicon-pencil pull-right" data-toggle="tooltip" data-placement="bottom" title="Eliminar Cliente"></a>
                   
-                  
+
                 </div>
               </div>
+
             @endforeach
           @else
             
@@ -116,9 +117,9 @@
   </div>
 </div>
 
-<!--*******-->
-<!-- Modal -->
-<!--*******-->
+<!--**********************-->
+<!-- Modal Crear Detalle -->
+<!--**********************-->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -172,9 +173,15 @@
     </div>
   </div>
 </div>
-<!--***********-->
-<!-- Fin Modal -->
-<!--***********-->
+<!--**********************-->
+<!-- Fin Modal Crear Detalle -->
+<!--**********************-->
+
+
+
+
+
+
 
   
 

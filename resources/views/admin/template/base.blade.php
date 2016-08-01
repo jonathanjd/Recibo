@@ -11,12 +11,12 @@
     <header>
       @include('admin.template.partials.navbar')
     </header>
-
+      
     <main>
       <section class="container">
         <div class="row">
           <div class="col-md-12">
-            @include('flash::message')
+            @include('admin.template.partials.mensaje')
             @yield('content')
           </div>
         </div>
@@ -30,7 +30,7 @@
 
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
    <script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script>
-   <script src="{{ asset('js/vendor.js') }}"></script>
+   <script src="{{ asset('js/vue.min.js') }}"></script>
    @yield('js')
 
   </body>

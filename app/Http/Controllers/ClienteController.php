@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Http\Requests\StoreClienteRequest;
+
+use App\Http\Requests\UpdateClienteRequest;
+
 use App\Cliente;
 
 use App\Invoice;
@@ -50,7 +54,7 @@ class ClienteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreClienteRequest $request)
     {
         //
         $cliente = new Cliente($request->all());
@@ -104,7 +108,7 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateClienteRequest $request, $id)
     {
         //
         $cliente = Cliente::find($id);

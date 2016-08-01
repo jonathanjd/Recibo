@@ -49,7 +49,7 @@
 
       <div class="form-group">
         {!! Form::label('telefono_dos', 'Telefono N°2') !!}
-        {!! Form::text('telefono_dos',null,['class' => 'form-control','placeholder' => 'Telefono Cliente','required']); !!}
+        {!! Form::text('telefono_dos',null,['class' => 'form-control','placeholder' => 'Telefono Cliente']); !!}
       </div>
 
 

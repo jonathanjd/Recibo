@@ -12,7 +12,7 @@
     <h3 class="panel-title">Eliminar Cliente #{{ $cliente->cedula }}</h3>
   </div>
   <div class="panel-body">
-    {!! Form::open(['route' => ['admin.cliente.update',$cliente->id],'method' => 'DELETE']) !!}
+    {!! Form::open(['route' => ['admin.cliente.destroy',$cliente->id],'method' => 'DELETE']) !!}
       <p>
         Deseas <strong>Eliminar</strong> el <strong>Cliente: {{  $cliente->nombre . ' ' . $cliente->apellido }}</strong>
       </p>
