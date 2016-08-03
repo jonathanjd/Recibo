@@ -36,6 +36,13 @@ class Detail extends Model
       return $query->where('entregado','=','No');
     }
 
+    public function scopeBuscar($query,$buscar)
+    {
+      # code...
+     return $query->where('maquina','LIKE',"%$buscar%")->orWhere('modelo','LIKE',"%$buscar%");
+      
+    }
+
 
     public function invoice()
     {

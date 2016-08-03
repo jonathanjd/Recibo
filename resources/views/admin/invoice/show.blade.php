@@ -42,7 +42,7 @@
             <strong>Nombre: </strong>{{ $invoice->cliente->nombre }}
           </p>
           <p>
-            <strong>Cliente: </strong>{{ $invoice->cliente->apellido }}
+            <strong>Apellido: </strong>{{ $invoice->cliente->apellido }}
           </p>
           <p>
             <strong>Cedula: </strong>{{ $invoice->cliente->cedula }}

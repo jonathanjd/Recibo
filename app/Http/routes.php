@@ -23,7 +23,9 @@ Route::group(['prefix' => 'admin'], function () {
 
   	Route::resource('invoice', 'InvoiceController');
 
-
+    Route::get('maquina',['as' => 'admin.maquina.index','uses'=>'DetailController@lista']);
+	Route::any('index/{detail}/estado',['as' => 'admin.detail.estado','uses'=>'DetailController@cambiarEstado']);
+	Route::any('index/{detail}/entregado',['as' => 'admin.detail.entregado','uses'=>'DetailController@cambiarEntregado']);
   	Route::get('invoice/{detail}/delete',['as' => 'admin.detail.delete','uses'=>'DetailController@delete']);
   	Route::resource('detail', 'DetailController');
 

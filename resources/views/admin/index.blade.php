@@ -10,8 +10,9 @@
   <div class="panel-heading">Bienvenido al Sistema</div>
   <div class="panel-body">
     
+<div class="row">
 
-<div class="col-md-6">
+  <div class="col-md-6">
   <div class="panel panel-primary">
     <div class="panel-heading">
       <h3 class="panel-title">Clientes</h3>
@@ -19,21 +20,20 @@
     <div class="panel-body">
       
       @if(count($clientes))
-  
-      @foreach($clientes as $cliente)
-        <div class="col-md-3">
-          <a href="{{ route('admin.cliente.show',$cliente->id) }}">
-            <p>
-              {{ $cliente->nombre .' '. $cliente->apellido }}
 
-            </a>
-          </div>
-          <div class="col-md-3">
-            <span class="label label-danger">{{ $cliente->telefono_uno }}</span>
-          </p>
-        </div>
+      <div class="list-group">
+          
+        @foreach($clientes as $cliente)
+
+        <a href="{{ route('admin.cliente.show',$cliente->id) }}" class="list-group-item">
+        {{ $cliente->nombre .' '. $cliente->apellido }} |
+        <strong>TeleFono:</strong>{{ $cliente->telefono_uno }}
+        </a>
+
       @endforeach
 
+      </div>
+  
       @else
 
       @endif
@@ -73,8 +73,12 @@
     </div>
   </div>
 </div>
+  
+</div>
 
-<div class="col-md-6">
+
+<div class="row">
+  <div class="col-md-6">
 
 <div class="panel panel-danger">
   <div class="panel-heading">
@@ -89,7 +93,15 @@
       {{ $noReparada->modelo }} | 
       <strong>{{ $noReparada->invoice->cliente->nombre.' '.$noReparada->invoice->cliente->apellido }}</strong> |
       <strong>{{ $noReparada->invoice->updated_at->diffForHumans() }}</strong>
+      @if($noReparada->entregado == 'Si')
+      | <i class="glyphicon glyphicon-plane"></i>
       </a>
+      <a href="#" class="btn btn-default disabled"><i class="glyphicon glyphicon-share-alt"></i> Reparada</a>
+      @else
+      </a>
+      <a href="{{ route('admin.detail.estado',$noReparada->id) }}" class="btn btn-default"><i class="glyphicon glyphicon-share-alt"></i> Reparada</a>
+      @endif
+
       @endforeach
     </div>
 
@@ -121,9 +133,10 @@
 </div>
   
 </div>
+</div>
 
-
-<div class="col-md-6">
+<div class="row">
+  <div class="col-md-6">
   <div class="panel panel-warning">
   <div class="panel-heading">
     <h3 class="panel-title">No Entregado</h3>
@@ -139,6 +152,7 @@
       <strong> {{ $noEntregado->invoice->cliente->telefono_uno }} </strong> |
       <strong>{{ $noEntregado->invoice->updated_at->diffForHumans() }}</strong>
       </a>
+      <a href="{{ route('admin.detail.entregado',$noEntregado->id) }}" class="btn btn-default"><i class="glyphicon glyphicon-share-alt"></i> Entregado</a>
       @endforeach
     </div>
 
@@ -160,7 +174,7 @@
       {{ $entregado->maquina }} -
       {{ $entregado->modelo }} |
       <strong>{{ $entregado->invoice->cliente->nombre.' '.$entregado->invoice->cliente->apellido }}</strong> |
-      <strong> {{ $entregado->invoice->cliente->telefono_uno }} </strong>
+      <strong> {{ $entregado->invoice->cliente->telefono_uno }} </strong> |
       <strong>{{ $entregado->invoice->updated_at->diffForHumans() }}</strong>
       </a>
       @endforeach
@@ -169,6 +183,11 @@
 </div>
   
 </div>
+</div>
+
+
+
+
 
 
   </div>

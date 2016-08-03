@@ -25,8 +25,8 @@ class UpdateDetailRequest extends Request
     {
         return [
             //
-            'maquina' => 'required|min:3|max:25',
-            'modelo' => 'required|min:3|max:25',
+            'maquina' => 'required|min:2|max:25',
+            'modelo' => 'required|min:2|max:25',
             'descripcion' => 'required|min:5|max:500',
             'abono' => 'required|digits_between:1,10',
             'costo' => 'required|digits_between:1,10',

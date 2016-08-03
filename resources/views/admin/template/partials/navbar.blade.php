@@ -42,15 +42,7 @@
         <!-- Fin Recibo -->
 
         <!-- Maquina -->
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Maquina <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="{{ route('admin.cliente.index') }}">Reparada</a></li>
-            <li><a href="{{ route('admin.cliente.create') }}">No Reparada</a></li>
-            <li><a href="{{ route('admin.cliente.create') }}">Entregada</a></li>
-            <li><a href="{{ route('admin.cliente.create') }}">No Entregada</a></li>
-          </ul>
-        </li>
+        <li><a href="{{ route('admin.maquina.index') }}">Maquina</a></li>
         <!-- Fin Maquina -->
 
         <!-- Usuario -->

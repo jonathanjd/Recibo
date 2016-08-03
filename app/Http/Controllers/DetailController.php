@@ -24,6 +24,13 @@ class DetailController extends Controller
         //
     }
 
+    public function lista(Request $request)
+    {
+        # code...
+        $details = Detail::buscar($request->buscar)->orderBy('updated_at','desc')->paginate(10);
+        return view('admin.detail.index')->with('details', $details);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -43,7 +50,7 @@ class DetailController extends Controller
     public function store(StoreDetailRequest $request)
     {
         //
-       
+        
         $detail = new Detail($request->all());
         $detail->save();
         flash('Detalle Factura Creado', 'success');
@@ -91,6 +98,26 @@ class DetailController extends Controller
         flash('Detalle Editado','success');
         return redirect()->route('admin.invoice.show',[$detail->invoice_id]);
 
+    }
+
+    public function cambiarEstado($id)
+    {
+        # code...
+        $detail = Detail::find($id);
+        $detail->estado = 'Reparada';
+        $detail->save();
+        flash('Detalle Editado','success');
+        return redirect()->route('admin.index');
+    }
+
+    public function cambiarEntregado($id)
+    {
+        # code...
+        $detail = Detail::find($id);
+        $detail->entregado = 'Si';
+        $detail->save();
+        flash('Detalle Editado','success');
+        return redirect()->route('admin.index');
     }
 
     public function delete($id)
