@@ -65,7 +65,7 @@ class DetailController extends Controller
     {
         # code...
         $dt = Carbon::now();
-        $maquinas = Detail::groupBy('updated_at')->orderBy('updated_at','desc')->get();
+        $maquinas = Detail::groupBy('updated_at')->having('updated_at')->orderBy('updated_at','desc')->get();
         return view('admin.detail.calendario-mensual')->with('dt',$dt)->with('maquinas',$maquinas);
     }
 
