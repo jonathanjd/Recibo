@@ -9,7 +9,7 @@
 
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h3 class="panel-title">Buscar Maquinas</h3>
+    <h3 class="panel-title"> <i class="glyphicon glyphicon-search"></i> Buscar Maquinas</h3>
   </div>
   <div class="panel-body">
     {!! Form::open(['route' => 'admin.maquina.index','method' => 'GET']) !!}
@@ -76,7 +76,7 @@
 
 <div class="panel panel-primary">
   <div class="panel-heading">
-      <h3 class="panel-title">Lista de Maquinas</h3>
+      <h3 class="panel-title"> <i class="glyphicon glyphicon-th-list"></i> Lista de Maquinas</h3>
   </div>
   <div class="panel-body">
     <table class="table table-hover">
@@ -147,16 +147,26 @@
   </div>
 </div>
   </div>
-  <div class="col-md-3">
-    <!--Items de Busqueda-->
-    <div class="list-group">
-  <a href="#" class="list-group-item active">
-    Calendario
-  </a>
-  <a href="" class="list-group-item">Mensual</a>
-  <a href="" class="list-group-item">Anual</a>
-</div>
+
+  <!--Menu Calendario-->
+<div class="col-md-3">
+
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title"> <i class="glyphicon glyphicon-calendar"></i> Calendario</h3>
+    </div>
+    <div class="panel-body">
+
+      <div class="list-group">
+        <a href="{{ route('admin.maquina.calendario.mensual') }}" class="list-group-item">Mensual</a>
+        <a href="{{ route('admin.maquina.calendario.anual') }}" class="list-group-item">Anual</a>
+      </div>
+
+    </div>
   </div>
+
+</div>
+  <!--Fin Menu Calendario-->
 
 </div>
   

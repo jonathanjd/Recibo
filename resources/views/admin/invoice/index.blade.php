@@ -14,7 +14,7 @@
 
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h3 class="panel-title">Buscar Factura</h3>
+    <h3 class="panel-title"> <i class="glyphicon glyphicon-search"></i> Buscar Factura</h3>
   </div>
   <div class="panel-body">
     {!! Form::open(['route' => 'admin.invoice.index','method' => 'GET']) !!}
@@ -39,7 +39,7 @@
 
 <div class="panel panel-primary">
   <div class="panel-heading">
-      <h3 class="panel-title">Lista de Factura</h3>
+      <h3 class="panel-title"> <i class="glyphicon glyphicon-th-list"></i> Lista de Factura</h3>
   </div>
   <div class="panel-body">
     <table class="table table-hover">
@@ -75,7 +75,7 @@
               {{ $invoice->cliente->nombre .' '.$invoice->cliente->apellido}}
             </td>
             <td>
-              <a href="{{ route('admin.invoice.show', $invoice) }}" class="btn btn-info glyphicon glyphicon-eye-open" data-toggle="tooltip" data-placement="bottom" title="Ver Cliente"></a>
+              <a href="{{ route('admin.invoice.show', $invoice) }}" class="btn btn-info glyphicon glyphicon-eye-open" data-toggle="tooltip" data-placement="bottom" title="Ver Factura"></a>
             </td>
           </tr>
         @endforeach

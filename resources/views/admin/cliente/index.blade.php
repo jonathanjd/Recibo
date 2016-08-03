@@ -14,7 +14,7 @@
 
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h3 class="panel-title">Buscar Cliente</h3>
+    <h3 class="panel-title"> <i class="glyphicon glyphicon-search"></i> Buscar Cliente</h3>
   </div>
   <div class="panel-body">
     {!! Form::open(['route' => 'admin.cliente.index','method' => 'GET']) !!}
@@ -39,7 +39,7 @@
 
 <div class="panel panel-primary">
   <div class="panel-heading">
-      <h3 class="panel-title">Lista de Clientes</h3>
+      <h3 class="panel-title"> <i class="glyphicon glyphicon-th-list"></i> Lista de Clientes</h3>
   </div>
   <div class="panel-body">
     <table class="table table-hover">

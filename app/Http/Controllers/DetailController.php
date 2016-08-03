@@ -12,8 +12,17 @@ use App\Http\Requests;
 
 use App\Detail;
 
+use Carbon\Carbon;
+
 class DetailController extends Controller
 {
+
+    public function __construct()
+    {
+        Carbon::setlocale('es');
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -26,9 +35,45 @@ class DetailController extends Controller
 
     public function lista(Request $request)
     {
-        # code...
-        $details = Detail::buscar($request->buscar)->orderBy('updated_at','desc')->paginate(10);
+       
+        if ($request->optionsRadiosA == 'Reparado' && $request->optionsRadiosB == 'Entregado') {
+
+            $details = Detail::reparada()->entregado()->orderBy('updated_at','desc')->paginate(10);
+
+        }elseif($request->optionsRadiosA == 'Reparado' && $request->optionsRadiosB == 'NoEntregado'){
+
+            $details = Detail::reparada()->noEntregado()->orderBy('updated_at','desc')->paginate(10);
+
+        }elseif($request->optionsRadiosA == 'NoReparado' && $request->optionsRadiosB == 'Entregado'){
+
+            $details = Detail::noReparada()->entregado()->orderBy('updated_at','desc')->paginate(10);
+
+        }elseif($request->optionsRadiosA == 'NoReparado' && $request->optionsRadiosB == 'NoEntregado'){
+
+            $details = Detail::noReparada()->noEntregado()->orderBy('updated_at','desc')->paginate(10);
+
+        }else{
+
+            $details = Detail::buscar($request->buscar)->orderBy('updated_at','desc')->paginate(10);
+
+        }
+        
         return view('admin.detail.index')->with('details', $details);
+    }
+
+    public function calendario_mensual()
+    {
+        # code...
+        $dt = Carbon::now();
+        $maquinas = Detail::groupBy('updated_at')->orderBy('updated_at','desc')->get();
+        return view('admin.detail.calendario-mensual')->with('dt',$dt)->with('maquinas',$maquinas);
+    }
+
+    public function calendario_anual()
+    {
+        # code...
+        $dt = Carbon::now();
+        return view('admin.detail.calendario-anual')->with('dt',$dt);
     }
 
     /**
