@@ -35,7 +35,7 @@ class DetailController extends Controller
 
     public function lista(Request $request)
     {
-       
+
         if ($request->optionsRadiosA == 'Reparado' && $request->optionsRadiosB == 'Entregado') {
 
             $details = Detail::reparada()->entregado()->orderBy('updated_at','desc')->paginate(10);
@@ -57,7 +57,7 @@ class DetailController extends Controller
             $details = Detail::buscar($request->buscar)->orderBy('updated_at','desc')->paginate(10);
 
         }
-        
+
         return view('admin.detail.index')->with('details', $details);
     }
 
@@ -65,8 +65,7 @@ class DetailController extends Controller
     {
         # code...
         $dt = Carbon::now();
-        $maquinas = Detail::groupBy('updated_at')->having('updated_at')->orderBy('updated_at','desc')->get();
-        return view('admin.detail.calendario-mensual')->with('dt',$dt)->with('maquinas',$maquinas);
+        return view('admin.detail.calendario-mensual')->with('dt',$dt);
     }
 
     public function calendario_anual()
@@ -95,7 +94,7 @@ class DetailController extends Controller
     public function store(StoreDetailRequest $request)
     {
         //
-        
+
         $detail = new Detail($request->all());
         $detail->save();
         flash('Detalle Factura Creado', 'success');
@@ -182,7 +181,7 @@ class DetailController extends Controller
     {
         //
         $detail = Detail::find($id);
-        $invoice = $detail->invoice_id; 
+        $invoice = $detail->invoice_id;
         $detail->delete();
         flash('Detalle Eliminado', 'success');
         return redirect()->route('admin.invoice.show',[$invoice]);

@@ -14,9 +14,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 	Route::get('index',['as' => 'admin.index','uses'=>'AdminController@index']);
 
-  	Route::get('user/{user}/delete',['as' => 'admin.user.delete','uses'=>'UserController@delete']);
   	Route::resource('user', 'UserController');
-
 
   	Route::get('cliente/{cliente}/delete',['as' => 'admin.cliente.delete','uses'=>'ClienteController@delete']);
   	Route::resource('cliente', 'ClienteController');

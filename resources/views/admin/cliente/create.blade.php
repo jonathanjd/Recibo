@@ -29,22 +29,22 @@
 
       <div class="form-group">
         {!! Form::label('nombre', 'Nombre') !!}
-        {!! Form::text('nombre',null,['class' => 'form-control','placeholder' => 'Nombre Cliente','required']); !!}
+        {!! Form::text('nombre',null,['class' => 'form-control','placeholder' => 'Nombre Cliente','required','v-model' => 'nombre']); !!}
       </div>
 
       <div class="form-group">
         {!! Form::label('apellido', 'Apellido') !!}
-        {!! Form::text('apellido',null,['class' => 'form-control','placeholder' => 'Apellido Cliente','required']); !!}
+        {!! Form::text('apellido',null,['class' => 'form-control','placeholder' => 'Apellido Cliente','v-model' => 'apellido','required']); !!}
       </div>
 
       <div class="form-group">
         {!! Form::label('cedula', 'Cedula') !!}
-        {!! Form::number('cedula',null,['class' => 'form-control','placeholder' => 'Cedula Cliente','required']); !!}
+        {!! Form::number('cedula',null,['class' => 'form-control','placeholder' => 'Cedula Cliente','v-model' => 'cedula','required']); !!}
       </div>
 
       <div class="form-group">
         {!! Form::label('telefono_uno', 'Telefono N°1') !!}
-        {!! Form::text('telefono_uno',null,['class' => 'form-control','placeholder' => 'Telefono Cliente','required']); !!}
+        {!! Form::text('telefono_uno',null,['class' => 'form-control','placeholder' => 'Telefono Cliente','v-model' => 'telefono_uno','required']); !!}
       </div>
 
       <div class="form-group">
@@ -56,7 +56,8 @@
       <div class="form-group">
       <div class="">
         <button type="reset" class="btn btn-default">Cancel</button>
-        <button type="submit" class="btn btn-primary">Guardar</button>
+        <button  v-if="mostrar" type="submit" class="btn btn-primary">Guardar</button>
+        <button  v-else class="btn btn-primary disabled">Guardar</button>
       </div>
     </div>
 
@@ -66,5 +67,11 @@
 <p>
   <a href="{{ route('admin.cliente.index') }}" class="btn btn-primary">Regresar</a>
 </p>
+
+@endsection
+
+@section('js')
+
+<script src="{{ asset('js/vue-cliente.js') }}"></script>
 
 @endsection

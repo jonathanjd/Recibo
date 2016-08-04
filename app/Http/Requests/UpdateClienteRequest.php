@@ -26,7 +26,7 @@ class UpdateClienteRequest extends Request
         return [
             //
             'nombre' => 'min:3|max:50|required',
-            'apellido' => 'min:3|max:50|numeric|required',
+            'apellido' => 'min:3|max:50|required',
             'telefono_uno' => 'min:5|max:12|required',
             'telefono_uno' => 'min:5|max:12',
         ];

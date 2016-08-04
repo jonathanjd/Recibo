@@ -11,12 +11,12 @@
   <div class="panel-body">
    
 
-@foreach($maquinas as $maquina)
+@for($i=1;$i <= $dt->daysInMonth;$i++)
 
 <div class="col-md-2">
     <div class="panel panel-primary">
     <div class="panel-heading">
-      <h3 class="panel-title">Dia: {{ $maquina->updated_at->format('d/m/Y') }}</h3>
+      <h3 class="panel-title"><strong>{{ $i }}</strong></h3>
     </div>
     <div class="panel-body">
       
@@ -24,9 +24,8 @@
   </div>
  </div>
 
-@endforeach
+@endfor
 
- 
   </div>
 </div>
 

@@ -60,9 +60,6 @@
             <td>
               <a href="{{ route('admin.user.edit', $user) }}" class="btn btn-warning glyphicon glyphicon-pencil" data-toggle="tooltip" data-placement="bottom" title="Editar Usuario"></a>
             </td>
-            <td>
-              <a href="{{ route('admin.user.delete', $user) }}" class="btn btn-danger glyphicon glyphicon-trash" data-toggle="tooltip" data-placement="bottom" title="Eliminar Usuario"></a>
-            </td>
           </tr>
         @endforeach
 
