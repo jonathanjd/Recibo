@@ -42,4 +42,10 @@ class AdminController extends Controller
     		->with('noEntregados',$noEntregados)
     		;
     }
+
+	public function miPlantilla()
+	{
+		return view('admin.mi_plantilla');
+	}
+
 }

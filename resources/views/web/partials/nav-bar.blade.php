@@ -14,11 +14,9 @@
 			<div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
 				<ul class="nav navbar-nav">
 					
-					<li class="menuItem"><a href="#whatis">What is?</a></li>
-					<li class="menuItem"><a href="#useit">Use It</a></li>
-					<li class="menuItem"><a href="#screen">Screenshot</a></li>
-					<li class="menuItem"><a href="#credits">Credits</a></li>
-					<li class="menuItem"><a href="#contact">Contact</a></li>
+					<li class="menuItem"><a href="#whatis">Que Ofrecemos?</a></li>
+					<li class="menuItem"><a href="#screen">A la Venta</a></li>
+					<li class="menuItem"><a href="#contact">Contactanos</a></li>
 				</ul>
 			</div>
 		   

@@ -67,30 +67,26 @@
 	<!-- What is -->
 	@include('web.partials.whatis')
 
-	
+
 	<!-- Use it -->
-    @include('web.partials.useit')
+	
 
 
 	<!--content-section-b-->
-    @include('web.partials.content-section-b')
-
+	
+  
     <!--content-section-a-->
-	@include('web.partials.content-section-a')
-    
-
+	
+	
 	<!-- Screenshot -->
 	@include('web.partials.screen')
 
 	<!--content-section-c-->
 	@include('web.partials.content-section-c')
-		
 	
 	<!-- Credits -->
-	@include('web.partials.credits')
 	
 	<!-- Banner Download -->
-	@include('web.partials.downloadlink')
 	
 	<!-- Contact -->
 	@include('web.partials.contact')

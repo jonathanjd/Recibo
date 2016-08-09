@@ -53,6 +53,10 @@
         <li><a href="{{ route('web.index') }}">Mi Sitio Web</a></li>
         <!-- Web -->
 
+        <!-- Web -->
+        <li><a href="{{ route('admin.plantilla') }}">Mi Plantilla</a></li>
+        <!-- Web -->
+
       
       </ul>
       

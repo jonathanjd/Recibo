@@ -2,34 +2,29 @@
       <div class="container">
         <div class="row">
           <div class="col-md-7">
-            <h3 class="footer-title">Follow Me!</h3>
-            <p>Vuoi ricevere news su altri template?<br/>
-              Visita Andrea Galanti.it e vedrai tutte le news riguardanti nuovi Theme!<br/>
-              Go to: <a  href="http://andreagalanti.it" target="_blank">andreagalanti.it</a>
+            <h3 class="footer-title">Solo Maquinas!</h3>
+            <p>Taller de reparacion y mantenimiento de maquinas de coser.
             </p>
 			
 			<!-- LICENSE -->
-			<a rel="cc:attributionURL" href="http://www.andreagalanti.it/flatfy"
-		   property="dc:title">Flatfy Theme </a> by
+			<a rel="cc:attributionURL" href="http://blogclon.com.ve/"
+		   property="dc:title">Blog Clon </a> por
 		   <a rel="dc:creator" href="http://www.andreagalanti.it"
-		   property="cc:attributionName">Andrea Galanti</a>
-		   is licensed to the public under 
-		   <BR>the <a rel="license"
-		   href="http://creativecommons.org/licenses/by-nc/3.0/it/deed.it">Creative
-		   Commons Attribution 3.0 License - NOT COMMERCIAL</a>.
+		   property="cc:attributionName">Jonathan Duran</a> es
+		   creador de nuestro sitio web. 
+		   <BR>
 		   
 	   
           </div> <!-- /col-xs-7 -->
 
           <div class="col-md-5">
             <div class="footer-banner">
-              <h3 class="footer-title">Flatfy Theme</h3>
+              <h3 class="footer-title">Solo Maquinas</h3>
               <ul>
-                <li>12 Column Grid Bootstrap</li>
-                <li>Form Contact</li>
-                <li>Drag Gallery</li>
-                <li>Full Responsive</li>
-                <li>Lorem Ipsum</li>
+                <li>Prestamos el mejor servicio a tus maquinas de coser</li>
+                <li>Rapido</li>
+                <li>100% Responsable</li>
+                <li>Con Garantia</li>
               </ul>
               Ir: <a href="{{ route('admin.index') }}" target="_blank">Admin</a>
             </div>

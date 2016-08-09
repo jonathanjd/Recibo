@@ -13,6 +13,7 @@
 Route::group(['prefix' => 'admin'], function () {
 
 	Route::get('index',['as' => 'admin.index','uses'=>'AdminController@index']);
+	Route::get('mi-plantilla',['as' => 'admin.plantilla','uses'=>'AdminController@miPlantilla']);
 
   	Route::resource('user', 'UserController');
 
