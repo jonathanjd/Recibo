@@ -6,13 +6,15 @@
 				<h2>Contactanos</h2>
 				<p class="lead" style="margin-top:0">Completa el siguiente formulario para comunicarte con nosotros, “No Olvides” rellenar todos los campos, es muy importante que revises bien los datos escritos para poder contactarte lo más pronto posible y ofrecerte la información que solicitas, al final del formulario haz clic en <strong>"ENVIAR MENSAJE"</strong>.</p>
 			</div>
-			
-			<form role="form" action="" method="post" >
+				
+		
+			{!! Form::open(['route' => 'admin.contact.store', 'method' => 'POST']) !!}
 				<div class="col-md-6">
+
 					<div class="form-group">
 						<label for="InputName">Nombre</label>
 						<div class="input-group">
-							<input type="text" class="form-control" name="InputName" id="InputName" placeholder="Enter Name" required>
+							<input v-model = "InputName" type="text" class="form-control" name="name" id="InputName" placeholder="Enter Name" required>
 							<span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span>
 						</div>
 					</div>
@@ -20,7 +22,7 @@
 					<div class="form-group">
 						<label for="InputEmail">Correo Electronico</label>
 						<div class="input-group">
-							<input type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="Enter Email" required  >
+							<input v-model="InputEmail" type="email" class="form-control" id="InputEmail" name="email" placeholder="Enter Email" required  >
 							<span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span>
 						</div>
 					</div>
@@ -28,20 +30,22 @@
 					<div class="form-group">
 						<label for="InputMessage">Mensaje</label>
 						<div class="input-group">
-							<textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>
+							<textarea v-model="InputMessage" name="message" id="InputMessage" class="form-control" rows="5" required></textarea>
 							<span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span>
 						</div>
 					</div>
 
-					<input type="submit" name="submit" id="submit" value="Submit" class="btn wow tada btn-embossed btn-primary pull-right">
+					<input v-if="mostrar" type="submit" name="submit" id="submit" value="ENVIAR MENSAJE" class="btn wow tada btn-embossed btn-primary pull-right">
+					<input v-else type="submit" name="submit" id="submit" value="ENVIAR MENSAJE" class="btn wow tada btn-embossed btn-primary pull-right" disabled="disabled">
+
 				</div>
-			</form>
+			{!! Form::close() !!}
 			
 			<hr class="featurette-divider hidden-lg">
 				<div class="col-md-5 col-md-push-1 address">
 					<address>
 					<h3>Donde nos encontramos?</h3>
-					<p class="lead"><a href="https://www.google.com/maps/preview?ie=UTF-8&q=The+Pentagon&fb=1&gl=us&hq=1400+Defense+Pentagon+Washington,+DC+20301-1400&cid=12647181945379443503&ei=qmYfU4H8LoL2oATa0IHIBg&ved=0CKwBEPwSMAo&safe=on">Anzoategui-Venezuela<br>
+					<p class="lead"><a href="https://www.google.com/maps/place/Barcelona,+Anzo%C3%A1tegui,+Venezuela/@10.1364313,-64.6885074,19z/data=!4m5!3m4!1s0x8c2d723eff71306f:0x22feb43cef889e75!8m2!3d10.1445691!4d-64.67768">Anzoategui-Venezuela<br>
 					Barcelona, Calle Eulalia Buroz, Nº 7-25, cerca del Liceo 'Felipe Guevara Rojas'.</a><br>
 					Movil: 0416-480-6889<br>
 					Local: 0281-332-8849</p>
@@ -58,3 +62,9 @@
 			</div>
 		</div>
 	</div>
+
+@section('js')
+<!-- vue-js -->
+<script src="{{ asset('js/vue-web.js') }}"></script>
+
+@endsection

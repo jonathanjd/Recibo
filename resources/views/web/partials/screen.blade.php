@@ -8,61 +8,15 @@
 		  </div>
 		    <div class="row wow bounceInUp" >
               <div id="owl-demo" class="owl-carousel">
-				
-				<a href="{{ asset('negrita-15c-1.jpg') }}" class="image-link">
-					<div class="item">
-						<img  class="img-responsive img-rounded" src="{{ asset('negrita-15c-1.jpg') }}" alt="Owl Image">
-					</div>
-				</a>
-				
-               <a href="{{ asset('negrita-15c-2.jpg') }}" class="image-link">
-					<div class="item">
-						<img  class="img-responsive img-rounded" src="{{ asset('negrita-15c-2.jpg') }}" alt="Owl Image">
-					</div>
-				</a>
-				
-				<a href="{{ asset('negrita-15c-3.jpg') }}" class="image-link">
-					<div class="item">
-						<img  class="img-responsive img-rounded" src="{{ asset('negrita-15c-3.jpg') }}" alt="Owl Image">
-					</div>
-				</a>
-				
-				<a href="{{ asset('singer-economica-1.jpg') }}" class="image-link">
-					<div class="item">
-						<img  class="img-responsive img-rounded" src="{{ asset('singer-economica-1.jpg') }}" alt="Owl Image">
-					</div>
-				</a>
-				
-               <a href="{{ asset('singer-economica-2.jpg') }}" class="image-link">
-					<div class="item">
-						<img  class="img-responsive img-rounded" src="{{ asset('singer-economica-2.jpg') }}" alt="Owl Image">
-					</div>
-				</a>
-				
-				<a href="{{ asset('singer-economica-3.jpg') }}" class="image-link">
-					<div class="item">
-						<img  class="img-responsive img-rounded" src="{{ asset('singer-economica-3.jpg') }}" alt="Owl Image">
-					</div>
-				</a>
-		
-				<a href="{{ asset('singer-875-1.jpg') }}" class="image-link">
-					<div class="item">
-						<img  class="img-responsive img-rounded" src="{{ asset('singer-875-1.jpg') }}" alt="Owl Image">
-					</div>
-				</a>
-				
-               <a href="{{ asset('singer-875-2.jpg') }}" class="image-link">
-					<div class="item">
-						<img  class="img-responsive img-rounded" src="{{ asset('singer-875-2.jpg') }}" alt="Owl Image">
-					</div>
-				</a>
-				
-				<a href="{{ asset('singer-875-3.jpg') }}" class="image-link">
-					<div class="item">
-						<img  class="img-responsive img-rounded" src="{{ asset('singer-875-3.jpg') }}" alt="Owl Image">
-					</div>
-				</a>
 
+              	@foreach($imagenes as $imagen)
+              		<a href="{{ asset($imagen->name) }}" class="image-link">
+						<div class="item">
+							<img  class="img-responsive img-rounded" src="{{ asset($imagen->name) }}" alt="Owl Image">
+						</div>
+					</a>
+              	@endforeach
+				
               </div>       
           </div>
         </div>

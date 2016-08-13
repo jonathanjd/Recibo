@@ -14,6 +14,10 @@ use App\Detail;
 
 use Carbon\Carbon;
 
+use App\Template;
+
+use App\Contact;
+
 class AdminController extends Controller
 {
     //
@@ -45,7 +49,11 @@ class AdminController extends Controller
 
 	public function miPlantilla()
 	{
-		return view('admin.mi_plantilla');
+        $imagenes = Template::all();
+
+        $contacts = Contact::all();
+
+		return view('admin.mi_plantilla')->with('imagenes',$imagenes)->with('contacts',$contacts);
 	}
 
 }

@@ -56,44 +56,8 @@
 		<div id="status"></div>
 	</div>
 	
-	<!--intro-header-->
-	@include('web.partials.intro-header')
+	@yield('content')
 	
-	
-	<!-- NavBar-->
-	@include('web.partials.nav-bar')
-
-	
-	<!-- What is -->
-	@include('web.partials.whatis')
-
-
-	<!-- Use it -->
-	
-
-
-	<!--content-section-b-->
-	
-  
-    <!--content-section-a-->
-	
-	
-	<!-- Screenshot -->
-	@include('web.partials.screen')
-
-	<!--content-section-c-->
-	@include('web.partials.content-section-c')
-	
-	<!-- Credits -->
-	
-	<!-- Banner Download -->
-	
-	<!-- Contact -->
-	@include('web.partials.contact')
-	
-	<!--Footer-->
-	@include('web.partials.footer')
-
     <!-- JavaScript -->
     <script src="{{ asset('tema/js/jquery-1.10.2.js') }}"></script>
     <script src="{{ asset('tema/js/bootstrap.js') }}"></script>
@@ -119,7 +83,11 @@
 	<script src="{{ asset('tema/js/classie.js') }}"></script>
 	<script src="{{ asset('tema/js/uiMorphingButton_inflow.js') }}"></script>
 	<!-- Magnific Popup core JS file -->
-	<script src="{{ asset('tema/js/jquery.magnific-popup.js') }}"></script> 
+	<script src="{{ asset('tema/js/jquery.magnific-popup.js') }}"></script>
+
+	<script src="{{ asset('js/vue.min.js') }}"></script>
+   	@yield('js')
+
 </body>
 
 </html>

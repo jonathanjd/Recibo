@@ -11,12 +11,20 @@
 							<button type="button "><span>Suscríbete para recibir noticias</span></button>
 							<div class="morph-content">
 								<div>
-									<div class="content-style-form content-style-form-4 ">
+									<div class="content-style-form content-style-form-4">
 										<h2 class="morph-clone">Suscríbete Aqui</h2>
-										<form>
-											<p><label>Correo Electronico</label><input type="text"/></p>
-											<p><button>Acepto</button></p>
-										</form>
+
+										{!! Form::open(['route' => 'admin.subscriber.store', 'method' => 'post']) !!}
+
+										{!! Form::label('Correo Electronico', 'email') !!}
+										
+									
+										{!! Form::text('email',null,['placeholder' => 'example@gmail.com','required']); !!}
+										
+
+										<button type="submit" class="btn btn-primary">Aceptar</button>
+
+										{!! Form::close() !!}
 									</div>
 								</div>
 							</div>

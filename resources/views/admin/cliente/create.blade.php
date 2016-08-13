@@ -57,7 +57,7 @@
       <div class="">
         <button type="reset" class="btn btn-default">Cancel</button>
         <button  v-if="mostrar" type="submit" class="btn btn-primary">Guardar</button>
-        <button  v-else class="btn btn-primary disabled">Guardar</button>
+        <button  v-else class="btn btn-primary" disabled="disabled">Guardar</button>
       </div>
     </div>
 
