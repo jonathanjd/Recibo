@@ -18,6 +18,8 @@ use App\Template;
 
 use App\Contact;
 
+use App\Subscriber;
+
 class AdminController extends Controller
 {
     //
@@ -53,7 +55,9 @@ class AdminController extends Controller
 
         $contacts = Contact::all();
 
-		return view('admin.mi_plantilla')->with('imagenes',$imagenes)->with('contacts',$contacts);
+         $subscribers = Subscriber::all();
+
+		return view('admin.mi_plantilla')->with('imagenes',$imagenes)->with('contacts',$contacts)->with('subscribers',$subscribers);
 	}
 
 }
